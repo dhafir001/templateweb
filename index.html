@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DWeb - Template Web Gratis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --success: #4cc9f0;
+            --card-bg: #ffffff;
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7ff;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        header img {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        
+        header img:hover {
+            transform: rotate(10deg);
+        }
+        
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: var(--gradient);
+            color: white;
+            padding: 60px 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transform: rotate(30deg);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+        
+        /* Credit Section */
+        .credit {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: pulse 2s infinite;
+        }
+        
+        .credit-text {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .credit-text i {
+            color: var(--accent);
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(247, 37, 133, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(247, 37, 133, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(247, 37, 133, 0); }
+        }
+        
+        /* Search Bar */
+        .search-container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        .search-bar {
+            display: flex;
+            background: white;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .search-bar input {
+            flex: 1;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .search-bar button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .search-bar button:hover {
+            background: var(--secondary);
+        }
+        
+        /* Container & Cards */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .template-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .template-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        .template-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            padding: 20px 20px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .template-title i {
+            color: var(--primary);
+        }
+        
+        .images-container {
+            position: relative;
+            padding: 0 15px;
+        }
+        
+        .main-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            height: 200px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+        
+        .thumbnail {
+            width: 100%;
+            border-radius: 8px;
+            height: 80px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .main-image:hover, .thumbnail:hover {
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .download-section {
+            padding: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .password-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .password-text {
+            font-weight: 500;
+            color: var(--gray);
+            white-space: nowrap;
+        }
+        
+        .password-input-container {
+            position: relative;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+        }
+        
+        .password-value {
+            font-weight: 600;
+            color: var(--dark);
+            letter-spacing: 1px;
+            border: none;
+            background: transparent;
+            width: 100%;
+            padding: 5px 0;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        
+        .toggle-password {
+            position: absolute;
+            right: 0;
+            background: none;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            padding: 5px;
+            transition: color 0.3s;
+        }
+        
+        .toggle-password:hover {
+            color: var(--primary);
+        }
+        
+        .copy-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            margin-left: 10px;
+        }
+        
+        .copy-btn:hover {
+            background: var(--secondary);
+        }
+        
+        .download-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .download-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .modal.show {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 5%;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-icons a {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
+            }
+            
+            .logo-container {
+                margin-bottom: 15px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .password-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .password-input-container {
+                width: 100%;
+                margin: 8px 0;
+            }
+            
+            .copy-btn {
+                align-self: flex-end;
+                margin-left: 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 40px 20px;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .template-title {
+                font-size: 1.2rem;
+            }
+            
+            .search-bar {
+                flex-direction: column;
+                border-radius: 10px;
+            }
+            
+            .search-bar input {
+                padding: 12px 15px;
+            }
+            
+            .search-bar button {
+                padding: 12px;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .template-card {
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 3000;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+        }
+        
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo DWeb">
+            <h1>DWeb - Template Web Gratis</h1>
+        </div>
+        <div class="nav-links">
+            <a href="#"><i class="fas fa-home"></i> Beranda</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Temukan Template Web Terbaik Sesuai Kebutuhan</h2>
+            <p>Koleksi template web gratis dengan desain modern dan responsif</p>
+            <div class="credit">
+                <span class="credit-text">
+                    <i class="fas fa-heart"></i> Created with love by <strong>Dhafir</strong>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <div class="search-container">
+        <div class="search-bar">
+            <input type="text" placeholder="Cari template...">
+            <button type="submit"><i class="fas fa-search"></i> Cari</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Template 1 -->
+        <div class="template-card">
+            <div class="template-title">
+                <i class="fas fa-gamepad"></i>
+                Web Template GAME
+            </div>
+            <div class="images-container">
+                <img class="main-image" src="temp1.png" alt="Template 1 Preview" data-full="temp1.png">
+                <div class="thumbnail-grid">
+                    <img class="thumbnail" src="foto1.png" alt="Template 1" data-full="foto1.png">
+                    <img class="thumbnail" src="foto2.png" alt="Template 1" data-full="foto2.png">
+                    <img class="thumbnail" src="foto3.png" alt="Template 1" data-full="foto3.png">
+                    <img class="thumbnail" src="foto4.png" alt="Template 1" data-full="foto4.png">
+                </div>
+            </div>
+            <div class="download-section">
+                <div class="password-container">
+                    <span class="password-text">Password:</span>
+                    <div class="password-input-container">
+                        <input type="password" value="-" class="password-value" id="password1" readonly>
+                        <button class="toggle-password" type="button" data-target="password1">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <button class="copy-btn" onclick="copyPassword('password1')">
+                        <i class="fas fa-copy"></i> Salin
+                    </button>
+                </div>
+                <a class="download-btn" href="https://drive.google.com/file/d/1cdIw5X9bBiERS5JD-VaV0nLoF8tiW2o9/view?usp=sharing" target="_blank">
+                    <i class="fas fa-download"></i> Download Template
+                </a>
+            </div>
+        </div>
+
+       <!-- Template 2 -->
+        <div class="template-card">
+            <div class="template-title">
+                <i class="fas fa-user-graduate"></i>
+                Template Portal Mahasiswa
+            </div>
+            <div class="images-container">
+                <img class="main-image" src="temp2.png" alt="Template 1 Preview" data-full="temp2.png">
+                <div class="thumbnail-grid">
+                    <img class="thumbnail" src="foto5.png" alt="Template 1" data-full="foto5.png">
+                    <img class="thumbnail" src="foto6.png" alt="Template 1" data-full="foto6.png">
+                    <img class="thumbnail" src="foto7.png" alt="Template 1" data-full="foto7.png">
+                    <img class="thumbnail" src="foto8.png" alt="Template 1" data-full="foto8.png">
+                </div>
+            </div>
+            <div class="download-section">
+                <div class="password-container">
+                    <span class="password-text">Password:</span>
+                    <div class="password-input-container">
+                        <input type="password" value="G7v!pR2xQ9" class="password-value" id="password2" readonly>
+                        <button class="toggle-password" type="button" data-target="password2">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <button class="copy-btn" onclick="copyPassword('password2')">
+                        <i class="fas fa-copy"></i> Salin
+                    </button>
+                </div>
+                <a class="download-btn" href="https://drive.google.com/file/d/1EWnJUa1DQMBsXnQRyQjEwOoDRefd68me/view?usp=sharing" target="_blank">
+                    <i class="fas fa-download"></i> Download Template
+                </a>
+            </div>
+        </div>
+
+        <!-- Template 3 -->
+        <div class="template-card">
+            <div class="template-title">
+                <i class="fas fa-shopping-cart"></i>
+                Web Template Toko Online
+            </div>
+            <div class="images-container">
+                <img class="main-image" src="temp3.png" alt="Template 1" data-full="temp3.png">
+                <div class="thumbnail-grid">
+                    <img class="thumbnail" src="foto9.png" alt="Template 1" data-full="foto9.png">
+                    <img class="thumbnail" src="foto10.png" alt="Template 1" data-full="foto10.png">
+                    <img class="thumbnail" src="foto11.png" alt="Template 1" data-full="foto11.png">
+                    <img class="thumbnail" src="foto12.png" alt="Template 1" data-full="foto12.png">
+                </div>
+            </div>
+            <div class="download-section">
+                <div class="password-container">
+                    <span class="password-text">Password:</span>
+                    <div class="password-input-container">
+                        <input type="password" value="Xq9@bK5nH2" class="password-value" id="password3" readonly>
+                        <button class="toggle-password" type="button" data-target="password3">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <button class="copy-btn" onclick="copyPassword('password3')">
+                        <i class="fas fa-copy"></i> Salin
+                    </button>
+                </div>
+                <a class="download-btn" href="https://drive.google.com/file/d/1ni_2ipItH_AmEQ4JeplAKIfSPMfamSDU/view?usp=sharing" target="_blank">
+                    <i class="fas fa-download"></i> Download Template
+                </a>
+            </div>
+        </div>
+
+         <!-- Template 4 -->
+        <div class="template-card">
+            <div class="template-title">
+                <i class="fas fa-map-marked-alt"></i>
+                Web Template Desa 1
+            </div>
+            <div class="images-container">
+                <img class="main-image" src="temp4.png" alt="Template 1" data-full="temp4.png">
+                <div class="thumbnail-grid">
+                    <img class="thumbnail" src="foto13.png" alt="Template 1" data-full="foto13.png">
+                    <img class="thumbnail" src="foto14.png" alt="Template 1" data-full="foto14.png">
+                    <img class="thumbnail" src="foto15.png" alt="Template 1" data-full="foto15.png">
+                    <img class="thumbnail" src="foto16.png" alt="Template 1" data-full="foto16.png">
+                </div>
+            </div>
+            <div class="download-section">
+                <div class="password-container">
+                    <span class="password-text">Password:</span>
+                    <div class="password-input-container">
+                        <input type="password" value="Fq5@bN6hV1" class="password-value" id="password4" readonly>
+                        <button class="toggle-password" type="button" data-target="password4">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <button class="copy-btn" onclick="copyPassword('password4')">
+                        <i class="fas fa-copy"></i> Salin
+                    </button>
+                </div>
+                <a class="download-btn" href="https://drive.google.com/file/d/1x94LvMAFTC8F6XfybXQnLUBEz9SqrC_f/view?usp=sharing" target="_blank">
+                    <i class="fas fa-download"></i> Download Template
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for image preview -->
+    <div class="modal" id="imageModal">
+        <div class="close-modal" onclick="closeModal()">&times;</div>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Password disalin ke clipboard!</span>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Tentang DWeb</h3>
+                <p>DWeb menyediakan template website gratis dengan kualitas premium untuk membantu Anda membuat website impian dengan mudah dan cepat.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Link Cepat</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Template Populer</a></li>
+                    <li><a href="#">Template Terbaru</a></li>
+                    <li><a href="#">Panduan Download</a></li>
+                    <li><a href="#">Syarat & Ketentuan</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Hubungi Kami</h3>
+                <p>Email: info@dweb.com</p>
+                <p>Telepon: -</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 DWeb - Template Web Gratis. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Image modal functionality
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        
+        function openModal(imageSrc) {
+            modalImage.src = imageSrc;
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Add click events to all images
+        document.querySelectorAll('.main-image, .thumbnail').forEach(image => {
+            image.addEventListener('click', () => {
+                openModal(image.getAttribute('data-full'));
+            });
+        });
+        
+        // Close modal when clicking outside the image
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // Toggle password visibility
+        document.querySelectorAll('.toggle-password').forEach(button => {
+            button.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                const passwordInput = document.getElementById(targetId);
+                const icon = this.querySelector('i');
+                
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    passwordInput.type = 'password';
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            });
+        });
+        
+        // Copy password functionality
+        function copyPassword(passwordFieldId) {
+            const passwordInput = document.getElementById(passwordFieldId);
+            passwordInput.select();
+            navigator.clipboard.writeText(passwordInput.value).then(() => {
+                showToast('Password disalin ke clipboard!');
+            });
+        }
+        
+        // Toast notification
+        const toast = document.getElementById('toast');
+        
+        function showToast(message) {
+            const toastMessage = document.getElementById('toastMessage');
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Search functionality
+        const searchInput = document.querySelector('.search-bar input');
+        const templateCards = document.querySelectorAll('.template-card');
+        
+        searchInput.addEventListener('input', () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            
+            templateCards.forEach(card => {
+                const title = card.querySelector('.template-title').textContent.toLowerCase();
+                if (title.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
